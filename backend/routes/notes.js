@@ -18,8 +18,8 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
 
 //ROUTE 2: Add a new note using: POST "/api/notes/addnote". Login required.
 router.post("/addnote", [
-    body('title', 'Enter a valid title').isLength({ min: 3 }),
-    body('description', 'Enter a valid content').isLength({ min: 10, max: 1000})
+    body('title', 'Enter a valid title').exists(),
+    body('description', 'Enter a valid content').isLength({ min: 1, max: 1000 })
 ], fetchuser, async (req, res) => {
     
     //if there are errors, return bad request and the errors
@@ -48,7 +48,7 @@ router.post("/addnote", [
 
 //ROUTE 3: Update an existing note using: PUT "/api/notes/updatenote/:id". Login required.
 router.put("/updatenote/:id", [
-    body('title', 'Enter a valid title').isLength({ min: 3 }),
+    body('title', 'Enter a valid title').exists(),
     body('description', 'Enter a valid content').isLength({ min: 1, max: 1000})
 ], fetchuser, async (req, res) => {
     
