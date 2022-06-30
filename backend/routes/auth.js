@@ -45,7 +45,7 @@ router.post("/createuser", [
       res.json({authToken});
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("Internal Server Error");
+      res.status(500).json({error: "Internal Server Error"});
     }
 });
 
@@ -71,7 +71,7 @@ router.post("/login", [
     }
     const passwordCompare = await bcrypt.compare(password, user.password);
     if(!passwordCompare){
-      return res.status(404).json({error: "Email ID and password do not match"});
+      return res.status(401).json({error: "Email ID and password do not match"});
     }
     const data = {
       user: {
@@ -82,7 +82,7 @@ router.post("/login", [
     res.json({authToken});
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({error: "Internal Server Error"});
   }
 });
 
@@ -94,7 +94,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
     res.send(user);
   } catch (error) {
     // console.error(error.message);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({error: "Internal Server Error"});
   }
 });
 

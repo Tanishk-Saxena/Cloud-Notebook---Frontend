@@ -12,7 +12,7 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
         res.json(notes);   
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({error: "Internal Server Error"});
     }
 });
 
@@ -42,7 +42,7 @@ router.post("/addnote", [
         res.json(note);    
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({error: "Internal Server Error"});
     }
 });
 
@@ -72,10 +72,10 @@ router.put("/updatenote/:id", [
         //check to see if user is accessing a pre-existing note or not and whether that is one of his own notes or not
         const existingNote = await Notes.findById(req.params.id);
         if(!existingNote){
-            return res.status(404).send({error: "No note found"});
+            return res.status(404).json({error: "No note found"});
         }
         if(existingNote.user.toString() !== req.user.id){
-            return res.status(401).send({error: "Please authenticate using a valid token"});
+            return res.status(401).json({error: "Authentication error. This note does not belong to the token used."});
         }
 
         //if user is infact accessing his own notes, then update the note with a new entry
@@ -84,7 +84,7 @@ router.put("/updatenote/:id", [
         res.json(note);    
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({error: "Internal Server Error"});
     }
 });
 
@@ -97,18 +97,18 @@ router.delete("/deletenote/:id", fetchuser, async (req, res) => {
         //check to see if user is accessing a pre-existing note or not and whether that is one of his own notes or not
         const existingNote = await Notes.findById(req.params.id);
         if(!existingNote){
-            return res.status(404).send({error: "No note found"});
+            return res.status(404).json({error: "No note found"});
         }
         if(existingNote.user.toString() !== req.user.id){
-            return res.status(401).send({error: "Please authenticate using a valid token"});
+            return res.status(401).json({error: "Authentication error. This note does not belong to the token used."});
         }
 
         //if user is infact accessing his own notes, then delete the note
         let note = await Notes.findByIdAndDelete(req.params.id);
-        res.json({"Success": "Note has been deleted", note});    
+        res.json({success: "Note has been deleted", note});    
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({error: "Internal Server Error"});
     }
 });
 
