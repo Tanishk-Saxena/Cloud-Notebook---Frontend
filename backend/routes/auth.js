@@ -67,11 +67,11 @@ router.post("/login", [
   try {
     let user = await User.findOne({email});
     if(!user){
-      res.status(404).json({error: "Please try to login with correct credentials"});
+      return res.status(404).json({error: "Please try to login with correct credentials"});
     }
     const passwordCompare = await bcrypt.compare(password, user.password);
     if(!passwordCompare){
-      res.status(404).json({error: "Please try to login with correct credentials"});
+      return res.status(404).json({error: "Please try to login with correct credentials"});
     }
     const data = {
       user: {
@@ -93,10 +93,9 @@ router.post("/getuser", fetchuser, async (req, res) => {
     const user = await User.findById(userId).select("-password");
     res.send(user);
   } catch (error) {
-    console.error(error.message);
+    // console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
 });
-
 
 module.exports = router;

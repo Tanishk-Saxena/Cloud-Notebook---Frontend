@@ -49,7 +49,7 @@ router.post("/addnote", [
 //ROUTE 3: Update an existing note using: PUT "/api/notes/updatenote/:id". Login required.
 router.put("/updatenote/:id", [
     body('title', 'Enter a valid title').isLength({ min: 3 }),
-    body('description', 'Enter a valid content').isLength({ min: 10, max: 1000})
+    body('description', 'Enter a valid content').isLength({ min: 1, max: 1000})
 ], fetchuser, async (req, res) => {
     
     //if there are errors, return bad request and the errors
@@ -66,7 +66,7 @@ router.put("/updatenote/:id", [
         user: req.user.id
     };
 
-    //create a note in the notes db
+    //update a note in the notes db
     try {
 
         //check to see if user is accessing a pre-existing note or not and whether that is one of his own notes or not
