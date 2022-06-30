@@ -67,11 +67,11 @@ router.post("/login", [
   try {
     let user = await User.findOne({email});
     if(!user){
-      return res.status(404).json({error: "Please try to login with correct credentials"});
+      return res.status(404).json({error: "No such user exists"});
     }
     const passwordCompare = await bcrypt.compare(password, user.password);
     if(!passwordCompare){
-      return res.status(404).json({error: "Please try to login with correct credentials"});
+      return res.status(404).json({error: "Email ID and password do not match"});
     }
     const data = {
       user: {
