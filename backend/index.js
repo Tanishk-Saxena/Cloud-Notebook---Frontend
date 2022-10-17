@@ -5,7 +5,7 @@ var cors = require('cors');
 connectToMongo();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
@@ -20,5 +20,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-console.log(`Server started on port successfully! iNotebook backend listening at http://localhost:${port}`);
+console.log(`Server started on port successfully! iCloud Notebook backend listening at http://localhost:${port}`);
 })
