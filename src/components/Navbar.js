@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({showAlert}) => {
 
   let location = useLocation();
   let navigate = useNavigate();
