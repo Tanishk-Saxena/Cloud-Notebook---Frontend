@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 
+const serverApi = process.env.REACT_APP_SERVER_API;
+
 const Signup = (props) => {
 
     const {showAlert} = props;
@@ -27,7 +29,7 @@ const Signup = (props) => {
         if(confirmPassword === user.password){
             try {
                 e.preventDefault();
-                const response = await fetch ("http://localhost:5000/api/auth/createuser", {
+                const response = await fetch (`${serverApi}api/auth/createuser`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

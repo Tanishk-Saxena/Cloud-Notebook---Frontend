@@ -3,14 +3,14 @@ import { useState } from 'react';
 
 const NoteState = (props) => {
 
-    const host = "http://localhost:5000/";
+    const host = process.env.REACT_APP_SERVER_API;
     const token = localStorage.getItem("token");
 
     const [notes, setNotes] = useState([]);
 
     //Get all notes
     const getNotes = async () => {
-        const url = `${host}api/notes/fetchallnotes`;
+        const url = `${host}/api/notes/fetchallnotes`;
         const response = await fetch(url, {
             "method": "GET",
             "headers": {
@@ -24,7 +24,7 @@ const NoteState = (props) => {
     //Add a note
     const addNote = async (newNote) => {
         //TODO: Make an api call
-        const url = `${host}api/notes/addnote`;
+        const url = `${host}/api/notes/addnote`;
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -53,7 +53,7 @@ const NoteState = (props) => {
     //Edit a note
     const editNote = async (note) => {
         //TODO: Make an api call
-        const url = `${host}api/notes/updatenote/${note._id}`;
+        const url = `${host}/api/notes/updatenote/${note._id}`;
         const response = await fetch(url, {
             method: "PUT",
             headers: {
@@ -80,7 +80,7 @@ const NoteState = (props) => {
     //Delete a node
     const deleteNote = async (id) => {
         //TODO: Make an api call
-        const url = `${host}api/notes/deletenote/${id}`;
+        const url = `${host}/api/notes/deletenote/${id}`;
         const response = await fetch(url, {
             method: "DELETE",
             headers: {
