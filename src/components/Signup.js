@@ -29,7 +29,7 @@ const Signup = (props) => {
         if(confirmPassword === user.password){
             try {
                 e.preventDefault();
-                const response = await fetch (`${serverApi}api/auth/createuser`, {
+                const response = await fetch (`${serverApi}/api/auth/createuser`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
