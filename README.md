@@ -55,7 +55,7 @@ Start the server
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`SERVER_API` - backend to which you will connect this client for processing code and relaying output. Either clone [server](https://github.com/Tanishk-Saxena/Cloud-Notebook---Backend) repository and use that locally, or use already hosted server: https://cloud-notebook-backend.vercel.app/ .
+`SERVER_API` - backend to which you will connect this client for processing all the routes, containing and creating all the models for the database, for fetching from and storing into the mongoDB Atlas database, and for providing auth functionalities. Either clone [server](https://github.com/Tanishk-Saxena/Cloud-Notebook---Backend) repository and use that locally, or use already hosted server: https://cloud-notebook-backend.vercel.app/ .
 ## Documentation
 
 ### Getting Started with Create React App
