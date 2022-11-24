@@ -7,7 +7,7 @@ The database is maintained through MongoDB.
 
 ## Demo
 
-http://cloud-notebookv1.vercel.app/
+https://cloud-notebookv1.vercel.app/
 
 
 ## Screenshots
