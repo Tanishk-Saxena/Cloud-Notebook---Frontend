@@ -15,3 +15,75 @@ code {
 i {
   cursor: pointer;
 }
+
+.about {
+  display: grid;
+  gap: 10rem;
+  grid-template-areas: 
+  'one two';
+  margin: 20px auto;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  color: rgb(87, 83, 83);
+}
+
+.about div h4 {
+  margin-bottom: 1.5rem;
+}
+
+.about>:nth-child(1) {
+  grid-area: one;
+}
+
+.about>:nth-child(2) {
+  grid-area: two;
+  max-width: 100%;
+  align-self: center;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 769px) {
+  .about {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .about {
+    grid-template-areas: 'one two';
+    gap: 4rem;
+    margin: auto 0;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .about {
+    grid-template-areas: 'two' 'one';
+  }
+  .about>:nth-child(2) {
+    max-width: 60%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .about-container {
+    padding: 0 20px;
+  }
+  .about>:nth-child(2) {
+    max-width: 80%;
+  }
+}
+
+div.footer {
+  position: absolute;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  color: rgb(87, 83, 83);
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
