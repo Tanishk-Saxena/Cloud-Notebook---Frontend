@@ -12,6 +12,7 @@ https://cloud-notebookv1.vercel.app/
 
 ## Screenshots
 
+![App Screenshot](https://github.com/Tanishk-Saxena/Cloud-Notebook---Frontend/blob/master/Screenshots/Screenshot%20(60).png?raw=true)
 ![App Screenshot](https://github.com/Tanishk-Saxena/Cloud-Notebook---Frontend/blob/master/Screenshots/Screenshot%20(48).png?raw=true)
 ![App Screenshot](https://github.com/Tanishk-Saxena/Cloud-Notebook---Frontend/blob/master/Screenshots/Screenshot%20(49).png?raw=true)
 ![App Screenshot](https://github.com/Tanishk-Saxena/Cloud-Notebook---Frontend/blob/master/Screenshots/Screenshot%20(50).png?raw=true)
