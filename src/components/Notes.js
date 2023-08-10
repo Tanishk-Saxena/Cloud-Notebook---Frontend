@@ -33,22 +33,29 @@ const Notes = (props) => {
         setNote(updatingNote);
     }
     
+    const openReadMoreModal = (readingNote) => {
+        readRef.current.click();
+        setNote(readingNote);
+    }
+
     const ref = useRef(null);
-    const refClose=useRef(null);
+    const refClose = useRef(null);
+    const readRef = useRef(null);
+    const readRefClose = useRef(null);
     
     return (
         <>
             <AddNote showAlert={showAlert}/>
 
-            <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref}>
+            <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#editModal" ref={ref}>
             Launch edit modal
             </button>
 
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="editModal" tabIndex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Edit Note</h5>
+                        <h5 className="modal-title" id="editModalLabel">Edit Note</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -75,11 +82,31 @@ const Notes = (props) => {
                 </div>
             </div>
 
+            <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#readMoreModal" ref={readRef}>
+              Read More
+            </button>
+
+            <div className="modal fade" id="readMoreModal" aria-labelledby="readMoreModalLabel" aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 className="modal-title fs-5" id="readMoreModalLabel">{note.title}</h1>
+                  </div>
+                  <div className="modal-body">
+                    {note.description}
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" ref={readRefClose}>Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="container my-3">
                 <h1>Your notes</h1>
                 <div className="row my-3">
                 {notes.map((note) => {
-                    return <NoteItem key={note._id} openUpdateNoteModal={openUpdateNoteModal} note={note} showAlert={showAlert}/>;
+                    return <NoteItem key={note._id} openUpdateNoteModal={openUpdateNoteModal} note={note} showAlert={showAlert} openReadMoreModal={openReadMoreModal}/>;
                 })}
                     <div className="container">
                         {notes.length===0 && "No notes to display"}

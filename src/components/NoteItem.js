@@ -3,7 +3,7 @@ import noteContext from '../context/notes/noteContext'
 
 const NoteItem = (props) => {
 
-  const {note, openUpdateNoteModal, showAlert} = props//destructuring
+  const {note, openUpdateNoteModal, openReadMoreModal, showAlert} = props//destructuring
 
   const context = useContext(noteContext);
   const {deleteNote} = context; //destructuring
@@ -18,7 +18,7 @@ const NoteItem = (props) => {
                 <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{openUpdateNoteModal(note);}}></i>
             </div>        
             <p className="card-text">{note.description}</p>
-            <a href="#" className="btn btn-primary">Read More</a>
+            <button onClick={()=>{openReadMoreModal(note);}} className="btn btn-primary">Read More</button>
             </div>
         </div>
     </div>
